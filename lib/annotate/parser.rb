@@ -310,9 +310,9 @@ module Annotate
         env['with_comment_column'] = 'true'
       end
 
-      option_parser.on('--exclude-table-prefix',
-                       "exclude table prefix from comment output") do
-        env['exclude_table_prefix'] = 'true'
+      option_parser.on('--exclude-database-table-prefix',
+                       "exclude database table prefix from comment output") do
+        env['exclude_database_table_prefix'] = 'true'
       end
     end
   end

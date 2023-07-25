@@ -210,9 +210,17 @@ module AnnotateModels
       info << get_schema_footer_text(klass, options)
     end
 
+    def get_table_name(klass, options = {})
+      if options[:exclude_database_table_prefix] && klass.table_name_prefix.include?('.')
+        klass.table_name.to_s.match(/\.([^.]*$)/)[1]
+      else
+        klass.table_name
+      end
+    end
+
     def get_schema_header_text(klass, options = {})
       info = "#\n"
-      table_name = options[:exclude_table_prefix] ? klass.table_name.to_s.sub(klass.table_name_prefix, '') : klass.table_name
+      table_name = get_table_name(klass, options)
       if options[:format_markdown]
         info << "# Table name: `#{table_name}`\n"
         info << "#\n"

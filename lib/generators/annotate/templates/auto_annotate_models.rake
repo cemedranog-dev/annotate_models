@@ -53,7 +53,7 @@ if Rails.env.development?
       'wrapper_open'                => nil,
       'wrapper_close'               => nil,
       'with_comment'                => 'true',
-      'exclude_table_prefix'        => 'true'
+      'exclude_database_table_prefix'        => 'true'
     )
   end
 
