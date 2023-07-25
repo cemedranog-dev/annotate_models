@@ -309,6 +309,11 @@ module Annotate
                        "include database comments in model annotations, as its own column, after all others") do
         env['with_comment_column'] = 'true'
       end
+
+      option_parser.on('--exclude-table-prefix',
+                       "exclude table prefix from comment output") do
+        env['exclude_table_prefix'] = 'true'
+      end
     end
   end
 end

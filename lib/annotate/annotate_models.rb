@@ -212,12 +212,13 @@ module AnnotateModels
 
     def get_schema_header_text(klass, options = {})
       info = "#\n"
+      table_name = options[:exclude_table_prefix] ? klass.table_name.to_s.sub(klass.table_name_prefix, '') : klass.table_name
       if options[:format_markdown]
-        info << "# Table name: `#{klass.table_name}`\n"
+        info << "# Table name: `#{table_name}`\n"
         info << "#\n"
         info << "# ### Columns\n"
       else
-        info << "# Table name: #{klass.table_name}\n"
+        info << "# Table name: #{table_name}\n"
       end
       info << "#\n"
     end
