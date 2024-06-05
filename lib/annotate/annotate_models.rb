@@ -442,7 +442,10 @@ module AnnotateModels
       old_header = old_content.match(header_pattern).to_s
       new_header = info_block.match(header_pattern).to_s
 
-      column_pattern = /^#[\t ]+[\w\*\.`]+[\t ]+.+$/
+      # Taken from PR https://github.com/ctran/annotate_models/pull/1010/files
+      column_name_pattern = '[\w\*\.`]+'
+      comment_pattern = '(?:\(.+\))?'
+      column_pattern = /^#[\t ]+#{column_name_pattern}#{comment_pattern}[\t ]+.+$/
       old_columns = old_header && old_header.scan(column_pattern).sort
       new_columns = new_header && new_header.scan(column_pattern).sort
 
